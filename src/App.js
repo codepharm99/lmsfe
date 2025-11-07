@@ -1,34 +1,18 @@
 import React, { useState } from "react";
+import Nav from "./navSys/Nav";
 import CoursePage from "./pagesSys-moduleOne/CoursePage";
-import "./courses.css";
+import "./App.css";
 
 const PAGES = {
   courses: { title: "Курсы", element: <CoursePage /> },
-  // students: { title: "Студенты", element: <StudentsPage /> },
-  // profile:  { title: "Профиль",  element: <ProfilePage /> },
 };
 
 export default function App() {
   const [page, setPage] = useState("courses");
-
+  const navItems = Object.entries(PAGES).map(([key, v]) => ({ key, title: v.title }));
   return (
     <div className="appShell">
-      <nav className="topbar">
-        <div className="brand">LMSfe</div>
-        <ul className="nav">
-          {Object.entries(PAGES).map(([key, { title }]) => (
-            <li key={key}>
-              <button
-                className={`nav-btn ${key === page ? "active" : ""}`}
-                onClick={() => setPage(key)}
-              >
-                {title}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
+      <Nav items={navItems} activeKey={page} onChange={setPage} brand="LMSfe" />
       <main className="page">{PAGES[page].element}</main>
     </div>
   );

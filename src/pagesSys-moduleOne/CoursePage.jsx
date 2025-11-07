@@ -1,15 +1,16 @@
 import React, { useMemo, useState } from "react";
+import "./courses.css"; 
 
 const initialCourses = [
-  { id: 1, title: "Algorithms",       code: "CS101",  teacher: "D. Knuth",  org: "IUA",  color: "#2b7cff", enrolled: false },
-  { id: 2, title: "Linear Algebra",   code: "MATH201",teacher: "G. Strang", org: "IUA",  color: "#ffb800", enrolled: true  },
-  { id: 3, title: "Web Development",  code: "CS204",  teacher: "S. Lee",    org: "IUA",  color: "#22c55e", enrolled: false },
-  { id: 4, title: "Databases",        code: "CS230",  teacher: "A. Stone",  org: "IUA",  color: "#a855f7", enrolled: false },
-  { id: 5, title: "Operating Systems",code: "CS240",  teacher: "A. Tanen",  org: "IUA",  color: "#ef4444", enrolled: true  },
-  { id: 6, title: "Discrete Math",    code: "MATH150",teacher: "N. Lutz",   org: "IUA",  color: "#06b6d4", enrolled: false },
+  { id: 1, title: "Algorithms", code: "CS101", teacher: "D. Knuth",  org: "IUA", color: "#2b7cff", enrolled: false },
+  { id: 2, title: "Linear Algebra", code: "MATH201", teacher: "G. Strang", org: "IUA", color: "#ffb800", enrolled: true },
+  { id: 3, title: "Web Development", code: "CS204", teacher: "S. Lee", org: "IUA", color: "#22c55e", enrolled: false },
+  { id: 4, title: "Databases", code: "CS230", teacher: "A. Stone", org: "IUA", color: "#a855f7", enrolled: false },
+  { id: 5, title: "Operating Systems", code: "CS240", teacher: "A. Tanen", org: "IUA", color: "#ef4444", enrolled: true },
+  { id: 6, title: "Discrete Math", code: "MATH150", teacher: "N. Lutz", org: "IUA", color: "#06b6d4", enrolled: false },
 ];
 
-export default function CoursesPage() {
+export default function CoursePage() {
   const [query, setQuery] = useState("");
   const [courses, setCourses] = useState(initialCourses);
 
@@ -26,11 +27,8 @@ export default function CoursesPage() {
     [courses]
   );
 
-  const toggleEnroll = (id) => {
-    setCourses(prev =>
-      prev.map(c => (c.id === id ? { ...c, enrolled: !c.enrolled } : c))
-    );
-  };
+  const toggleEnroll = (id) =>
+    setCourses(prev => prev.map(c => (c.id === id ? { ...c, enrolled: !c.enrolled } : c)));
 
   return (
     <div className="catalog">
@@ -48,9 +46,7 @@ export default function CoursesPage() {
       </header>
 
       <section className="grid">
-        {filtered.length === 0 && (
-          <div className="empty">Ничего не найдено.</div>
-        )}
+        {filtered.length === 0 && <div className="empty">Ничего не найдено.</div>}
 
         {filtered.map(course => (
           <article className="card" key={course.id}>
