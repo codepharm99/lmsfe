@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import CoursePage from "./pagesSys-moduleOne/CoursePage"; // модуль №1
+import CoursePage from "./pagesSys-moduleOne/CoursePage";
 import courses from "/Users/taurbek/lmsfe/src/pagesSys-moduleOne/courses.css"; // модуль №1
 
-// Реестр страниц: добавляй сюда новые модули
 const PAGES = {
   courses: { title: "Курсы", element: <CoursePage /> },
-  // пример на будущее:
   // students: { title: "Студенты", element: <StudentsPage /> },
   // profile:  { title: "Профиль",  element: <ProfilePage /> },
 };
