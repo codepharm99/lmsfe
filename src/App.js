@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CoursePage from "./pagesSys-moduleOne/CoursePage";
-import courses from "/Users/taurbek/lmsfe/src/pagesSys-moduleOne/courses.css"; // модуль №1
+import "./courses.css";
 
 const PAGES = {
   courses: { title: "Курсы", element: <CoursePage /> },
